@@ -47,7 +47,7 @@ function Lanyard() {
           <span className="idinner">
             <span className="face front">
               <span className="band">DEVELOPER ID</span>
-              <span className="photo"><span className="ring"><Image src="/portrait-bust.webm" alt={`Portrait de ${PROFILE.name}`} width={128} height={156} priority /></span></span>
+              <span className="photo"><span className="ring"><Image src="/portrait-bust.jpg" alt={`Portrait de ${PROFILE.name}`} width={128} height={156} priority /></span></span>
               <span className="who"><b>{PROFILE.name}</b><em>{PROFILE.role}</em></span>
               <span className="rows">
                 <span><i>Dept.</i>Sciences Informatiques</span><span><i>Établ.</i>FSS · Sfax</span><span><i>Valid till</i>{PROFILE.validTill}</span>
