@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { PROFILE } from "@/lib/data";
+import { Analytics } from "@vercel/analytics/next";
 
 const sans = localFont({ src: "../fonts/InterTight.woff2", variable: "--f-sans", weight: "100 900", display: "swap" });
 const serif = localFont({
@@ -20,7 +21,10 @@ export const viewport: Viewport = { themeColor: "#f4f2ee", width: "device-width"
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
