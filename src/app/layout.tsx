@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Kchaou Mohamed", url: siteUrl }],
   creator: "Kchaou Mohamed",
   publisher: "Kchaou Mohamed",
+  verification: { google: "vwd0d0AwbfW_dFhj0JAYJ1a250aaJYk8NdXnOhJjlRM" },
   robots: {
     index: true,
     follow: true,
