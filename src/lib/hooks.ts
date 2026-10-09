@@ -18,10 +18,14 @@ export function useInView<T extends Element>(threshold = 0.3, once = true): [Ref
 }
 
 /** 0 → 1 while the section crosses the viewport (or its pinned range). */
-export function useScrollProgress<T extends HTMLElement>(mode: "cross" | "pinned" = "cross"): [RefObject<T | null>, number] {
+export function useScrollProgress<T extends HTMLElement>(
+  mode: "cross" | "pinned" = "cross",
+  enabled = true,
+): [RefObject<T | null>, number] {
   const ref = useRef<T | null>(null);
   const [p, setP] = useState(0);
   useEffect(() => {
+    if (!enabled) { setP(0); return; }
     let raf = 0;
     const calc = () => {
       raf = 0; const el = ref.current; if (!el) return;
@@ -32,6 +36,6 @@ export function useScrollProgress<T extends HTMLElement>(mode: "cross" | "pinned
     const on = () => { if (!raf) raf = requestAnimationFrame(calc); };
     calc(); window.addEventListener("scroll", on, { passive: true }); window.addEventListener("resize", on);
     return () => { window.removeEventListener("scroll", on); window.removeEventListener("resize", on); cancelAnimationFrame(raf); };
-  }, [mode]);
+  }, [mode, enabled]);
   return [ref, p];
 }

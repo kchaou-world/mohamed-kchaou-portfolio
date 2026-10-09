@@ -31,15 +31,27 @@ function Card({ a, i, near }: { a: (typeof ACHIEVEMENTS)[number]; i: number; nea
 }
 
 export default function Achievements() {
-  const [ref, p] = useScrollProgress<HTMLElement>("pinned");
+  const [mobile, setMobile] = useState(false);
+  const [ref, p] = useScrollProgress<HTMLElement>("pinned", !mobile);
   const track = useRef<HTMLDivElement>(null);
   const [travel, setTravel] = useState(0);
   const [near, setNear] = useState(0);
 
   useEffect(() => {
-    const m = () => { const t = track.current; if (t) setTravel(Math.max(0, t.scrollWidth - innerWidth)); };
-    m(); addEventListener("resize", m); return () => removeEventListener("resize", m);
+    const query = matchMedia("(max-width: 760px)");
+    const update = () => setMobile(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
   }, []);
+  useEffect(() => {
+    const measure = () => {
+      const t = track.current;
+      if (t) setTravel(mobile ? 0 : Math.max(0, t.scrollWidth - innerWidth));
+    };
+    measure(); addEventListener("resize", measure);
+    return () => removeEventListener("resize", measure);
+  }, [mobile]);
   useEffect(() => {
     const t = track.current; if (!t) return; let best = 0, bd = 1e9;
     Array.from(t.querySelectorAll(".acard")).forEach((c, i) => {
