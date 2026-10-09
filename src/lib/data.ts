@@ -54,9 +54,27 @@ export const PROJECTS = [
 ];
 
 export const CERTIFICATIONS = [
-  { title: "CCNA : Introduction to Networks", issuer: "Cisco Networking Academy", year: "2026" },
-  { title: "Introduction to Docker", issuer: "Orange Digital Center, Faculté des Sciences de Sfax", year: "2026" },
-  { title: "Développement AR – Vuforia & AR Foundation", issuer: "Orange Digital Center, FSS", year: "2026" },
+  {
+    title: "CCNA : Introduction to Networks",
+    issuer: "Cisco Networking Academy",
+    year: "2026",
+    documents: [
+      { label: "PDF 1", href: "/certifications/ccna-introduction-to-networks.pdf" },
+      { label: "PDF 2", href: "/certifications/ccna-course-completion.pdf" },
+    ],
+  },
+  {
+    title: "Introduction to Docker",
+    issuer: "Orange Digital Center, Faculté des Sciences de Sfax",
+    year: "2026",
+    documents: [{ label: "PDF", href: "/certifications/introduction-to-docker.pdf" }],
+  },
+  {
+    title: "Développement AR – Vuforia & AR Foundation",
+    issuer: "Orange Digital Center, FSS",
+    year: "2026",
+    documents: [{ label: "PDF", href: "/certifications/developpement-ar-vuforia-ar-foundation.pdf" }],
+  },
 ];
 
 export const JOURNEY = [
